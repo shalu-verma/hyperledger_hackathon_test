@@ -1,0 +1,80 @@
+openapi: 3.0.0
+info:
+  title: Asset Contract API
+  version: 1.0.0
+paths:
+  /create-asset:
+    post:
+      summary: Creates a new asset
+      requestBody:
+        description: The asset to create
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                name:
+                  type: string
+                value:
+                  type: number
+              required:
+                - id
+                - name
+                - value
+      responses:
+        "200":
+          description: The ID of the created asset
+          content:
+            text/plain:
+              schema:
+                type: string
+  /update-asset:
+    put:
+      summary: Updates an existing asset
+      requestBody:
+        description: The updated asset
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: The ID of the asset to update
+                name:
+                  type: string
+                value:
+                  type: number
+              required:
+                - id
+      responses:
+        "200":
+          description: The updated asset
+          content:
+            text/plain:
+              schema:
+                type: string
+  /read-asset:
+    get:
+      summary: Retrieves the current state of the asset
+      responses:
+        "200":
+          description: The current state of the asset
+          content:
+            text/plain:
+              schema:
+                type: string
+  /get-asset-history:
+    get:
+      summary: Retrieves the transaction history of the asset
+      responses:
+        "200":
+          description: The transaction history of the asset
+          content:
+            text/plain:
+              schema:
+                type: string
